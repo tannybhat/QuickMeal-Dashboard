@@ -1,12 +1,13 @@
 
 
-# Assignment 2
+# QuickMeal Dashboard
 
 
 
 ## Usage
+node app.js
 
-
+Go to http://localhost:3000/
 
 ## Developing
 
