@@ -1,0 +1,52 @@
+//extends layout_login
+
+html
+	style.
+		h1,h3 { font-family: Rockwell ;font-size: 21px; color:#ff6347;}
+		p {font-family: Rockwell;font-size: 15px; color:#FFFFFF;}
+	
+
+	head
+		
+		title QuickMeal
+		div(class="tooltip")
+			img(src='/images/logo.png')
+			span(class="tooltiptext") QuickMeal
+				
+		h1 Order Food Online!
+		link(rel='stylesheet', href='/stylesheets/jqueru-ui-dotluvtheme.css')
+		//link(rel='stylesheet', href='/stylesheets/jquery-ui.css')
+		link(rel='stylesheet', href='/stylesheets/style.css')
+		script(src='/javascripts/jquery.js')
+		script(src='/javascripts/jquery-ui.js')
+		
+		script.
+				$(function() {
+					$("#tabs").tabs();
+				});
+	body
+		
+		div(id="tabs")
+			ul
+				li
+					a(href="/html/offers.html") Offers
+				li
+					a(href="/html/faq.html") FAQ
+				li
+					a(href="/html/contact.html") Contact Us
+				
+			
+		if(message)
+			p= message
+		form(action = "/home" method = "POST")
+			input(name = "username" type = "text" required placeholder = "username" class = "login_user tooltip")
+			br
+			br
+			input(name = "password" type = "password" required placeholder = "password" class = "login_password")
+			br
+			br 
+			button(type = "Submit" class = "login_button") Customer Login
+			br
+			br
+		form(action = "/register" method = "POST")
+			button(type = "Submit" class = "register_button") New User?

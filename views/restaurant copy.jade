@@ -1,0 +1,146 @@
+doctype html
+
+
+html
+	div.bgimg
+		style.
+			h1,h3 { font-family: Rockwell ;font-size: 50px; color:#ff6347;}
+			h2 {font-family: Rockwell;font-size: 30px; color:#FFFFFF;}
+			p {font-family: Rockwell;font-size: 30px; color:#FFFFFF;}
+			li {font-family: Rockwell;font-size: 30px; color: #FFFFFF;}
+		head
+			title=  QuickMeal
+			div(class="tooltip")
+				img(src='/images/logo.png')
+				span(class="tooltiptext") QuickMeal
+
+			
+			link(rel='stylesheet', href='/stylesheets/jquery-ui.css')
+			link(rel='stylesheet', href='/stylesheets/style.css')
+			script(src='/javascripts/jquery.js')
+			script(src='/javascripts/jquery-ui.js')
+			script(src='/javascripts/common.js')
+			script.
+				$(document).ready(function() {
+					var item1 = false;
+					var item2 = false;
+					var item3 = false;
+					$(".myAccordion").accordion();
+					$("#acc").accordion();
+					$(".source li").draggable({helper:'clone'});
+					$("#shoppingCart").draggable().resizable().droppable({drop: function(event,ui){
+						if(item1 === false) {
+							$("#items").append($("<li></li>").text(ui.draggable.attr("alt")));
+							ui.draggable.addClass("ordered");
+							item1 = true;
+							$("#inputForm").val($("#inputForm").val() +  ui.draggable.attr("alt"));
+						}
+						else if(item2 === false) {
+							$("#items").append($("<li></li>").text(ui.draggable.attr("alt")));
+							ui.draggable.addClass("ordered");
+							item2 = true;
+							$("#inputForm").val($("#inputForm").val() + "," + ui.draggable.attr("alt"));
+						}
+						else if(item3 === false) {
+							$("#items").append($("<li></li>").text(ui.draggable.attr("alt")));
+							ui.draggable.addClass("ordered");
+							item3 = true;
+							$("#inputForm").val($("#inputForm").val() + "," + ui.draggable.attr("alt"));
+						}
+						else {
+							alert('Item already in cart');
+						}
+					}});
+				});
+				
+				$(document).ready(function() {
+					var item1 = false;
+					var item2 = false;
+					var item3 = false;
+					$("#myAccordion").accordion();
+					$("#acc").accordion();
+					$(".source img").draggable({helper:'clone'});
+					$("#CalorieCounter").draggable().resizable().droppable({drop: function(event,ui){
+						if(item1 === false) {
+							$("#cal_items").append($("<li></li>").text(ui.draggable.attr("alt") + " " +  getCal(ui) ));
+							ui.draggable.addClass("ordered");
+							item1 = true;
+							
+						}
+						else if(item2 === false) {
+							$("#cal_items").append($("<li></li>").text(ui.draggable.attr("alt")+" " +  getCal(ui)));
+							ui.draggable.addClass("ordered");
+							item2 = true;
+							
+						}
+						else if(item3 === false) {
+							$("#cal_items").append($("<li></li>").text(ui.draggable.attr("alt")+ " " +  getCal(ui)));
+							ui.draggable.addClass("ordered");
+							item3 = true;
+							
+						}
+						else {
+							alert('Item already in cart');
+						}
+					}});
+				});
+		body
+			div(class="topcorner" id="shoppingCart")
+				h2 Shopping Cart
+
+				ol(name ="items" id="items")
+				
+				form(action = "/billing" method = "POST")
+					button(name="inputForm" id="inputForm" onclick="return CheckOrder()") Place Order
+			div(class="topcorner" id="CalorieCounter")
+				h2 Drop here for calories
+
+				ol(name ="cal_items" id="cal_items")
+			
+			h1= 'Welcome to '+title
+			h3 Menu: Please Select your order
+
+			div(class="myAccordion")
+				ul(class="source")
+					if(name=="mcd")
+						li Fries
+						div
+							img(src='/images/fries.png' alt='Fries')
+						br
+						br
+						li Burger
+						div
+							img(src='/images/burger.png' alt='Burger')
+						br
+						br
+						li Sandwich
+						div
+							img(src='/images/sandwich.png' alt='Sandwich')
+					else if(name=="tcbl")
+						li Burrito
+						img(src='/images/burrito.png' alt='Burrito' )
+						br
+						br
+						li Quesadilla
+						img(src='/images/quesadilla.png' alt='Quesadilla' )
+						br
+						br
+						li Lunch Box
+						img(src='/images/lunchBox.png' alt='Lunch Box' )
+					else
+						li Panipuri
+						img(src='/images/panipuri.png' alt='Panipuri')
+						br
+						br
+						li Sevpuri
+						img(src='/images/sevpuri.png' alt='Sevpuri')
+						br
+						br
+						li Bhel
+						img(src='/images/bhel.png' alt='Bhel')
+			
+					
+			form(action = "/" method = "GET")
+				button(name = "logout" id="logout" type = "Submit" value="logout") Logout
+				br
+	

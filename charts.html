@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		window.onload = function(){
+			var div_1 = document.getElementById('line1');
+			var iframe = document.createElement('iframe');
+			
+			// iframe.style.display = "none";
+			iframe.width="640"
+			iframe.height="480"
+			iframe.src = "https://charts.mongodb.com/charts-cmpe280-xmsdy/embed/charts?id=50041c79-283d-4d10-b047-b962c7e338db&tenant=a3107769-6e6e-431b-9dc9-fb1fee15fbc7";
+			div_1.appendChild(iframe);
+			//var div_2 = document.getElementById('chart_2');
+			var iframe = document.createElement('iframe');
+			
+			// iframe.style.display = "none";
+			iframe.width="640"
+			iframe.height="480"
+			iframe.src = "https://charts.mongodb.com/charts-cmpe280-xmsdy/embed/charts?id=d67ef30b-f98a-4494-afe8-fd6288d8127c&tenant=a3107769-6e6e-431b-9dc9-fb1fee15fbc7";
+			div_1.appendChild(iframe);
+
+			var div_2 = document.getElementById('line2');
+			var iframe = document.createElement('iframe');
+			
+			// iframe.style.display = "none";
+			iframe.width="640"
+			iframe.height="480"
+			iframe.src = "https://charts.mongodb.com/charts-cmpe280-xmsdy/embed/charts?id=8297a9a4-3747-4e16-82a7-0154cd192597&tenant=a3107769-6e6e-431b-9dc9-fb1fee15fbc7";
+			div_2.appendChild(iframe);
+
+			var iframe = document.createElement('iframe');
+			
+			// iframe.style.display = "none";
+			iframe.width="640"
+			iframe.height="480"
+			iframe.src = "https://charts.mongodb.com/charts-cmpe280-xmsdy/embed/charts?id=a7cfc81a-5b62-4b3f-9759-fc18e09805e7&tenant=a3107769-6e6e-431b-9dc9-fb1fee15fbc7";
+			div_2.appendChild(iframe);
+
+		}
+	</script>
+	<script src="https://public.tableau.com/javascripts/api/tableau-2.js"></script>
+  <script type='text/javascript'>                    
+    var divElement = document.getElementById('viz1574132143738');                    
+    var vizElement = divElement.getElementsByTagName('object')[0];                    
+    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    
+    var scriptElement = document.createElement('script');                    
+    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+    vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+    </script>
+</head>
+<body>
+
+<h1>Stats Dashboard</h1>
+
+<p>This dashboard displays an overview of the food delivery dataset.</p>
+
+<!-- <iframe style="border: none;border-radius: 2px;box-shadow: 0 2px 10px 0 rgba(70, 76, 79, .2);" width="640" height="480" src="https://charts.mongodb.com/charts-cmpe280-xmsdy/embed/charts?id=50041c79-283d-4d10-b047-b962c7e338db&tenant=a3107769-6e6e-431b-9dc9-fb1fee15fbc7"></iframe>-->
+
+<div id="chart_1"> 
+<span id='line1'>
+</span>
+</div>
+
+
+<div id="chart_2">
+<span id='line2'>
+</span>
+</div>
+
+<div class='tableauPlaceholder' id='viz1574132143738' style='position: relative'>
+  <noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;2N&#47;2NXTDBSZ4&#47;1_rss.png' style='border: none' /></a>
+  </noscript>
+  <object class='tableauViz'  style='display:none;'>
+  <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;2NXTDBSZ4' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;2N&#47;2NXTDBSZ4&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' />
+  </object>
+  </div>    
+
+
+
+</body>
+</html>
+

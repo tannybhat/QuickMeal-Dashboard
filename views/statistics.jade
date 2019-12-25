@@ -1,0 +1,84 @@
+
+html
+    head
+        
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        script(type='text/javascript').
+            window.onload = function() {
+
+                var mcdCount = !{mcdCount};
+                var tcblCount = !{tcblCount};
+                var chtbvnCount = !{chtbvnCount};
+                var friesCount = !{friesCount};
+                var burgerCount = !{burgerCount};
+                var sandwichCount = !{sandwichCount};
+                var burritoCount = !{burritoCount};
+                var quesadillaCount = !{quesadillaCount};
+                var lunchboxCount = !{lunchboxCount};
+                var panipuriCount = !{panipuriCount};
+                var sevpuriCount = !{sevpuriCount};
+                var bhelCount = !{bhelCount};
+            
+
+                var chart = new CanvasJS.Chart("chartContainer", {
+                    //theme: "light2", // "light1", "light2", "dark1", "dark2"
+                    //background-image: url("/images/back.jpg"),
+                    exportEnabled: true,
+                    animationEnabled: true,
+                    title: {
+                        text: "Restaurant Market Share"
+                    },
+                    data: [{
+                        type: "pie",
+                        startAngle: 25,
+                        toolTipContent: "<b>{label}</b>: {y} orders",
+                        showInLegend: "true",
+                        legendText: "{label}",
+                        indexLabelFontSize: 16,
+                        indexLabel: "{label} - {y} orders",
+                        dataPoints: [
+                            { y: mcdCount, label: "Mc Donalds" },
+                            { y: tcblCount, label: "Taco Bell" },
+                            { y: chtbvnCount, label: "Chat Bhavan" }
+                        ]
+                    }]
+                });
+                chart.render();
+
+                var chart1 = new CanvasJS.Chart("chartContainer1", {
+                    //theme: "light2", // "light1", "light2", "dark1", "dark2"
+                    exportEnabled: true,
+                    animationEnabled: true,
+                    title: {
+                        text: "Food Order Count"
+                    },
+                    data: [{
+                        type: "pie",
+                        startAngle: 25,
+                        toolTipContent: "<b>{label}</b>: {y} orders",
+                        showInLegend: "true",
+                        legendText: "{label}",
+                        indexLabelFontSize: 16,
+                        indexLabel: "{label} - {y} orders",
+                        dataPoints: [
+                            { y: friesCount, label: "Fries" },
+                            { y: burgerCount, label: "Burger" },
+                            { y: sandwichCount, label: "Sandwich" },
+                            { y: burritoCount, label: "Burrito" },
+                            { y: quesadillaCount, label: "Quesadilla" },
+                            { y: lunchboxCount, label: "Lunch Box" },
+                            { y: panipuriCount, label: "Panipuri" },
+                            { y: sevpuriCount, label: "Sevpuri" },
+                            { y: bhelCount, label: "Bhel" }
+                        ]
+                    }]
+                });
+                chart1.render();
+
+                }
+    body
+        div(id="chartContainer" style="height: 370px; width: 100%;")
+
+        div(id="chartContainer1" style="height: 370px; width: 100%;")
+
+        script(src="https://canvasjs.com/assets/script/canvasjs.min.js")

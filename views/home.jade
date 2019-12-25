@@ -1,0 +1,37 @@
+extends layout
+	
+block content
+	h1= 'Welcome '+title
+	h1 Choose Restaurants
+	script(type='text/javascript').
+		function myFunction(name) {alert(name + " has a Special 20% off for you! Automatically Applied at checkout");}
+	link(rel='stylesheet', href='/stylesheets/style.css')
+	
+	div(class="charts")
+		
+		button(name = "chart" class="button" onclick="window.location.href = '/html/dashboard.html';" type = "Submit" value="chart" ) Go to Dashboard
+
+	div(class="tooltip")
+		
+		form(action = "/restaurant" method = "POST")
+			.grid-container
+				.grid-item
+					div(class='container')
+						img(src='/images/mcdonalds-512.png' class='image1')
+						div(class='overlay')
+							div(class='text') McDonalds
+					button(name = "mcd" type = "Submit" value="mcd" class = "fd_button" onclick="myFunction('McDonals')") Go to Restaurant
+				.grid-item
+					div(class='container')
+						img(src='/images/tacobell.png' class='image1')
+						div(class='overlay')
+							div(class='text') Taco Bell
+						br
+						br
+					button(name = "tcbl" type = "Submit" value="tcbl" class = "fd_button" onclick="myFunction('TacoBell')") Go to Restaurant
+				.grid-item
+					div(class='container')
+						img(src='/images/chaatbhavan.png' class='image1')
+						div(class='overlay')
+							div(class='text') Chaat Bhavan
+					button(name = "chtbvn" type = "Submit" value="chtbvn" class = "fd_button" onclick="myFunction('ChaatBhavan')") Go to Restaurant

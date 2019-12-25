@@ -1,0 +1,54 @@
+extends layout
+
+block content
+    h1= message
+    
+    div(id = "RR")
+        h4 User Reviews
+        table(style='border: 2px solid black; float: center; background-color: white; width: 50%; ')
+            thead
+                tr 
+                    th(style = 'border: 2px solid black;') Restaurant
+                    th(style = 'border: 2px solid black;') Review Text
+            tbody
+                each review in result
+                    tr
+                        td(style = 'border: 2px solid black;') #{review.restaurant}
+                        td(style = 'border: 2px solid black;') #{review.text}
+    div(id = "RR")
+        
+        h4 Which restaurant review would you like to search?
+        form(action = "/reviews" method = "POST")
+            p Mc. Donalds
+            input(type="radio" name="restaurant" value="mcd") 
+            p Taco Bell
+            input(type="radio" name="restaurant" value="tcb") 
+            p Chat Bhavan
+            input(type="radio" name="restaurant" value="chtbvn")
+            br
+            br 
+            button(type = "Submit") View Selected Reviews
+        h4 Wanna delete your reviews! Tell us the restaurant and review text
+        form(action = "/delreview" method = "POST")
+            input(name = "restaurant1" type = "text" required placeholder = "Ex: Mc Donalds")
+            br
+            br
+            input(name = "text1" type = "text" required placeholder = "Review Text")
+            br
+            br 
+            button(type = "Submit") Delete Reviews
+            br
+            br
+        h4 Wanna Edit your reviews! Tell us the restaurant and review text
+        form(action = "/editreview" method = "POST")
+            input(name = "restaurant2" type = "text" required placeholder = "Ex: Mc Donalds")
+            br
+            br
+            input(name = "rev" type = "text" required placeholder = "Old Review Text")
+            br
+            br
+            input(name = "rev_new" type = "text" required placeholder = "New Review Text")
+            br
+            button(type = "Submit") Edit Reviews
+            br
+            br

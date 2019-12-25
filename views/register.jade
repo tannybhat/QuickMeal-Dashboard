@@ -1,0 +1,39 @@
+extends layout_login
+
+html
+	div.bgimg			
+		head
+			link(rel='stylesheet', href='https://code.jquery.com/ui/1.12.1/themes/dot-luv/jquery-ui.css')
+			script(src='https://code.jquery.com/jquery-1.12.4.js')
+			script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+			script.
+				$(document).ready(function() {
+					$("#email").tooltip();
+					$("#state").selectmenu();					
+				});
+		body
+			block content
+				h1= title
+				if(message)
+					h6= message
+				form(action = "/post_register" method = "POST")		
+					input(name = "username" type = "text" pattern = "[A-Za-z]{5,10}" title = "Username must be in the range of 5 to 10 characters" required placeholder = "Please enter the username" class = "login_user")		
+					br
+					br
+					input(name = "password" type = "password" pattern="(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Password must be of 8 or more characters with atleast one number, one uppercase letter and one lowercase letter" required placeholder = "Please enter a password" class = "login_password")
+					br
+					br 
+					input(name = "email" id = "email" placeholder="Enter a valid email address" title="We may send you promotional offers every month." class="login_email")
+					br
+					br
+					label(for='state') Select State:  
+						select#state(name='state')
+							option(selected='selected') California
+							option New York
+							option Boston
+					br
+					br
+					#dialog
+						ul
+							li a(href="terms.html" class="terms_dialog") Terms and Conditions	
+					button(type = "Submit" class = "register_button") Register!

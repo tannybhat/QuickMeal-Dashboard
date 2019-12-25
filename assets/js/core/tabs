@@ -1,0 +1,15 @@
+
+function initViz() {
+    var containerDiv = document.getElementById("vizContainer"),
+    url = "https://public.tableau.com/views/Average_ratings_accross_countries/Dashboard1?:display_count=y&publish=yes&:origin=viz_share_link";
+    options = {
+        hideTabs: false,
+                            hideToolbar: true,
+        onFirstInteractive: function () {
+            console.log("Run this code when the viz has finished loading.");
+            //workbook = viz.getWorkbook();
+        }
+    };
+
+    var viz = new tableau.Viz(containerDiv, url,options);
+}

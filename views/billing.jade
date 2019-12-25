@@ -1,0 +1,65 @@
+
+html    
+  style.
+     h1,h3 { font-family: Rockwell ;font-size: 50px; color:#ff6347;}
+     p {font-family: Rockwell;font-size: 30px; color:#FFFFFF;}
+  head
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    script(type='text/javascript').
+      function toggle_visibility() {
+      var e = document.getElementById("orderStatus");
+      if((e.style.display == "none") && (document.getElementById("addr").value != "")){
+      e.style.display = "block";
+      }
+      var f = document.getElementById("review");
+      if((f.style.display == "none")){
+      f.style.display = "block";
+      }
+      }
+      function check() {
+      if (document.getElementById("addr").value == "")
+      {
+      alert("Please Add address");
+      //document.getElementById("addr").style.display ="none";
+      }
+      }
+        
+  body      
+    p#pp.pic
+      img#pic(src='images/delivery.png', alt='Alternate Text')
+    div(id="animate")
+    div(style = 'width:95%; position:absolute; top:10px; left:10px; background-color:#FCFF33; color:#FF0000')
+        marquee(direction='right', loop='10', scrollamount='2', scrolldelay='2', behavior='alternate', hspace = '10%') LIMITED OFFER: BUY 1 GET 1 FREE MEAL!!! HURRY!!!
+    div(style='width: 50%; height: 50%; float:left;')
+      h1 Please review your order
+      p= text
+    div
+      form(action = "/statistics" method = "POST")
+        button(type = "Submit") View Statistics     
+    div(id = "review" style = 'width: 50%; height: 50%; float:right; display:none;')
+      h1 Please submit a review
+      form(action = "/review" method = "POST")
+        input(name = "restaurant" type = "text" required placeholder = "Ex: Mc Donalds")
+        br
+        br
+        input(name = "text" type = "text" required placeholder = "Review Text")
+        br
+        br 
+        button(type = "Submit") Submit Review
+        br
+        br
+      
+    div(style='width: 50%; height: 50%; float:right;')
+      h1 Enter Delivery Address
+      textarea(rows='3', cols='60', name='address', id='addr')          
+    button(type='submit', onclick='check(); toggle_visibility(); ')  Place Order              
+    #orderStatus(style='display:none')   
+      h1 Order Status
+      .container
+        ul.progressbar
+          li.active Order Received           
+          li Processing          
+          li Picked Up           
+          li Delivered
+    
+      

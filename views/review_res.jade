@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    h1= message
+    
+    div(id = "RR")
+        h4 Reviews Results
+        table(style='border: 2px solid black; float: center; background-color: white; width: 50%; ')
+            thead
+                tr 
+                    th(style = 'border: 2px solid black;') Restaurant
+                    th(style = 'border: 2px solid black;') Review Text
+            tbody
+                each review in result
+                    tr
+                        td(style = 'border: 2px solid black;') #{review.restaurant}
+                        td(style = 'border: 2px solid black;') #{review.text}
+        
+    

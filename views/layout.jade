@@ -1,0 +1,28 @@
+doctype html
+
+
+html
+	div.bgimg
+		style.
+			h1,h3 { font-family: Rockwell ;font-size: 50px; color:#ff6347;}		
+			p {font-family: Rockwell;font-size: 30px; color:#FFFFFF;}
+		head
+			title=  QuickMeal
+			div(class="tooltip")
+				img(src='/images/logo.png')
+				span(class="tooltiptext") QuickMeal			
+			
+			link(rel='stylesheet', href='/stylesheets/style.css')
+			link(rel='stylesheet', href='/stylesheets/jquery-ui.css')
+			script(src='/javascripts/jquery.js')
+			script(src='/javascripts/jquery-ui.js')
+			script.
+				$(document).ready(function() {
+					$(".myAccordion").accordian;
+				});
+		body 
+			block content
+			p
+			form(action = "/" method = "GET")
+				button(name = "logout" type = "Submit" value="logout") Logout
+				br

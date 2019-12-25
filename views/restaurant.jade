@@ -1,0 +1,156 @@
+doctype html
+
+
+html
+	div.bgimg
+		style.
+			h1,h3 { font-family: Rockwell ;font-size: 50px; color:#ff6347;}
+			h2 {font-family: Rockwell;font-size: 30px; color:#FFFFFF;}
+			p {font-family: Rockwell;font-size: 30px; color:#FFFFFF;}
+			li {font-family: Rockwell;font-size: 30px; color: #FFFFFF;}
+		head
+			title=  QuickMeal
+			div(class="tooltip")
+				img(src='/images/logo.png')
+				span(class="tooltiptext") QuickMeal
+
+			
+			link(rel='stylesheet', href='/stylesheets/jquery-ui.css')
+			link(rel='stylesheet', href='/stylesheets/style.css')
+			script(src='/javascripts/jquery.js')
+			script(src='/javascripts/jquery-ui.js')
+			script(src='/javascripts/common.js')
+			script.
+				$(document).ready(function() {
+					var item1 = false;
+					var item2 = false;
+					var item3 = false;
+					
+					$("#acc").accordion();
+					$("#myAccordion img").draggable({helper:'clone'});
+					$("#shoppingCart").draggable().resizable().droppable({drop: function(event,ui){
+						if(item1 === false) {
+							$("#items").append($("<li></li>").text(ui.draggable.attr("alt")));
+							ui.draggable.addClass("ordered");
+							item1 = true;
+							$("#inputForm").val($("#inputForm").val() +  ui.draggable.attr("alt"));
+						}
+						else if(item2 === false) {
+							$("#items").append($("<li></li>").text(ui.draggable.attr("alt")));
+							ui.draggable.addClass("ordered");
+							item2 = true;
+							$("#inputForm").val($("#inputForm").val() + "," + ui.draggable.attr("alt"));
+						}
+						else if(item3 === false) {
+							$("#items").append($("<li></li>").text(ui.draggable.attr("alt")));
+							ui.draggable.addClass("ordered");
+							item3 = true;
+							$("#inputForm").val($("#inputForm").val() + "," + ui.draggable.attr("alt"));
+						}
+						else {
+							alert('Item already in cart');
+						}
+					}});
+				});
+				
+				$(document).ready(function() {
+					var item1 = false;
+					var item2 = false;
+					var item3 = false;
+					
+					$("#acc").accordion();
+					$("#myAccordion img").draggable({helper:'clone'});
+					$("#CalorieCounter").draggable().resizable().droppable({drop: function(event,ui){
+						if(item1 === false) {
+							$("#cal_items").append($("<li></li>").text(ui.draggable.attr("alt") + " " +  getCal(ui) ));
+							ui.draggable.addClass("ordered");
+							item1 = true;
+							
+						}
+						else if(item2 === false) {
+							$("#cal_items").append($("<li></li>").text(ui.draggable.attr("alt")+" " +  getCal(ui)));
+							ui.draggable.addClass("ordered");
+							item2 = true;
+							
+						}
+						else if(item3 === false) {
+							$("#cal_items").append($("<li></li>").text(ui.draggable.attr("alt")+ " " +  getCal(ui)));
+							ui.draggable.addClass("ordered");
+							item3 = true;
+							
+						}
+						else {
+							alert('Item already in cart');
+						}
+					}});
+				});
+		body
+			div(class="topcorner" id="shoppingCart")
+				h2 Shopping Cart
+
+				ol(name ="items" id="items")
+				
+				form(action = "/billing" method = "POST")
+					button(name="inputForm" id="inputForm" onclick="return CheckOrder()") Place Order
+			div(class="topcorner" id="CalorieCounter")
+				h2 Drop here for calories
+
+				ol(name ="cal_items" id="cal_items")
+			
+			h1= 'Welcome to '+title
+			h3 Menu: Please Select your order
+			
+
+			div(id="myAccordion")
+				
+				if(name=="mcd")
+					h2 Fries
+					div
+						p French fries, or simply fries.
+						img(src='/images/fries.png' alt='Fries')
+					
+					h2 Burger
+					div
+						p Veggie or Chicken Burger with Choice of Bun.
+						img(src='/images/burger.png' alt='Burger')
+					
+					h2 Sandwich
+					div
+						p Veggie or Chicken with choice of bread.
+						img(src='/images/sandwich.png' alt='Sandwich')
+				else if(name=="tcbl")
+					h2 Burrito
+					div
+						p A burrito is a dish in Mexican and Tex-Mex cuisine that consists of a flour tortilla with various other ingredients. It is wrapped into a closed-ended cylinder that can be picked up, in contrast to a taco, where the tortilla is simply folded around the fillings.
+						img(src='/images/burrito.png' alt='Burrito' )
+					
+					h2 Quesadilla
+					div
+						p A quesadilla is a Mexican dish and type of taco, consisting of a tortilla that is filled primarily with cheese, and sometimes meats, beans, vegetables, and spices, and then cooked on a griddle.
+						img(src='/images/quesadilla.png' alt='Quesadilla' )
+					
+					h2 Lunch Box
+					div
+						p A mix of burrito, quesadilla and lemonade.
+						img(src='/images/lunchBox.png' alt='Lunch Box' )
+				else
+					h2 Panipuri
+					div
+						p Panipuri is a type of snack from UP/Bihar region of the Indian subcontinent. It consists of a round, hollow puri, deep-fried crisp crepe and filled with a mixture of flavored water, tamarind chutney, chili, chaat masala, potato, onion or chickpeas
+						img(src='/images/panipuri.png' alt='Panipuri')
+					
+					h2 Sevpuri
+					div
+						p Sev puri is an Indian snack and a type of chaat. It is a speciality that originates from Mumbai, Maharashtra, India. In Mumbai and Pune, sev puri is strongly associated with street food, but is also served at upscale locations.
+						img(src='/images/sevpuri.png' alt='Sevpuri')
+					
+					h2 Bhel
+					div
+						p Bhelpuri is a savoury snack, originating from the Indian subcontinent, and is also a type of chaat. It is made of puffed rice, vegetables and a tangy tamarind sauce. Bhel is often identified with the beaches of Mumbai, such as Chowpatty or Juhu.
+						img(src='/images/bhel.png' alt='Bhel')
+			
+					
+			form(action = "/" method = "GET")
+				button(name = "logout" id="logout" type = "Submit" value="logout") Logout
+				br
+	
